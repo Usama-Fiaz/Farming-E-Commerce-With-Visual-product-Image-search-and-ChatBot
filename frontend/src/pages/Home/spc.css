@@ -1,0 +1,35 @@
+/* CSS Styles */
+.filters-container {
+  background-color: #f3efe0; /* Set your desired background color */
+  border-radius: 10px; /* Set your desired border radius */
+  padding: 20px; /* Adjust padding as needed */
+}
+
+.filters-container label {
+  font-weight: bold; /* Make labels bold */
+  margin-bottom: 5px; /* Add some space below labels */
+}
+
+.filters-container select {
+  width: 100%; /* Make dropdowns fill the width of their container */
+  padding: 8px; /* Add some padding to dropdowns */
+  border: 1px solid #ced4da; /* Add border to dropdowns */
+  border-radius: 5px; /* Add border radius to dropdowns */
+}
+
+/* Optional: Add some margin to each Form.Group */
+.filters-container .form-group {
+  margin-bottom: 20px;
+}
+
+.range-input::-webkit-slider-thumb {
+  background-color: green; /* Change the color of the thumb */
+}
+
+.range-input::-moz-range-thumb {
+  background-color: green; /* Change the color of the thumb for Firefox */
+}
+
+.slick-slide {
+  padding: 10px; /* Adds space between slides */
+}

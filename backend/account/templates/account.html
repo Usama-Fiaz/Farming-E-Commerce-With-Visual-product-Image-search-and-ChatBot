@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Customer Signup{% endblock %}
+{% block content %}
+
+
+<style>
+    
+    
+    
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 200px;
+     
+    }
+    
+    .vertical-center {
+      margin: 50;
+      position: absolute;
+      top: 50%;
+  
+    }
+    </style>
+    
+    <div class="container">
+      <div class="vertical-center">
+
+        <a type="button" role="button" href="{% url "account:VendorRegister" %}" class="btn btn-dark">
+            Create Account as a Vendor
+        </a>
+
+        <a type="button" role="button" href="{% url "account:CustomerRegister" %}" class="btn btn-dark">
+            Create Account as a Customer
+        </a>
+
+      </div>
+    </div>
+
+
+    {% endblock %}

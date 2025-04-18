@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+{% block title %}Vendor Signup{% endblock %}
+{% block content %}
+
+<style>
+    .account-form input {
+        border: 2px solid #ccc;
+        height: calc(2em + .75rem + 2px);
+    }
+
+    .account-form input:focus {
+        border-color: #1497ff;
+        box-shadow: none;
+    }
+
+    #id_Customer_phone,#id_Customer_address {
+        display: block;
+        width: 100%;
+        padding: .375rem .75rem;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #212529;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        border-radius: .25rem;
+        transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
+
+
+</style>
+
+<div class="container-fluid">
+    <div class="row no-gutter">
+        <div class="col-md-12">
+            <div class="login d-flex align-items-center py-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-lg-7  mx-auto">
+                             <form class="account-form p-4 rounded col-lg-10 mx-auto" action="." method="post">
+                                {% csrf_token %}
+                                <h3 class="mb-2 font-weight-bold">Farming E-Commerce</h3>
+                                
+
+                                {% if form.errors %}
+                                <p>Please correct the following errors:</p>
+                                {% for field in form %}
+                                {% if field.errors %}
+                                <div class="alert alert-primary" role="alert">
+                                    {{ field.label }}: {{ field.errors|striptags }}
+                                </div>
+                                {% endif %}
+                                {% endfor %}
+                                {% endif %}
+
+                                <label>{{ form.username.label }}<span class="text-muted small">
+                                        (Required)</span></label>
+                                {{ form.username }}
+                                <label>{{ form.email.label}}<span class="text-muted small">
+                                        (Required)</span></label>
+                                {{ form.email }}
+                                <label>{{ form.password1.label}}<span class="text-muted mb-4">
+                                        </span></label>
+                                 <small class="form-text text-muted mb-4 small">
+                                    At least 8 characters and 1 digit
+                                </small>
+                                {{ form.password1 }}
+                                <label>{{ form.password2.label}}<span class="text-muted small">
+                                        (Required)</span></label>
+                                {{ form.password2 }}
+
+
+                            
+
+                                <label>Customer phone number<span class="text-muted small">
+                                    (*)</span></label>
+                                    <input type="text" name="Customer_phone" placeholder="Enter Customer phone" maxlength="12" minlength="4" required id="id_Customer_phone">
+
+                                <label>Customer address<span class="text-muted small">
+                                    (*)</span></label>
+                                    <input type="text" name="Customer_address" placeholder="Enter Customer address" maxlength="100" minlength="4" required id="id_Customer_address">
+
+
+
+
+
+                                <div class="d-flex mb-5 align-items-center">
+                                    <label class="control control--checkbox mb-0"><span class="caption">Customer</span>
+                                        
+
+                                        <input type="checkbox" name="is_customer" id="id_is_customer" required>
+
+                                      <div class="control__indicator"></div>
+                                    </label>
+                                  </div>
+                                  
+                           
+                                  
+
+
+                              
+                                <button class="btn btn-primary btn-block py-2 mb-4 mt-5 fw500 w-100" type="submit">Register</button>
+                                <p class="text-center">
+                                    <a href="{% url "account:login" %}">Already have an account?</a>
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script >
+
+    $('#id_password, #id_password2').on('keyup', function () {
+        if ($('#id_password').val() == $('#id_password2').val()) {
+          $('#message').html('Matching').css('color', 'green');
+        } else 
+          $('#message').html('Not Matching').css('color', 'red');
+      });
+
+</script>
+
+
+{% endblock %}

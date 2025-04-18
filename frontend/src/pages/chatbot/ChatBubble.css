@@ -1,0 +1,35 @@
+.chatItemcc {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 70%;
+}
+
+.userChatItemcc {
+  align-self: flex-end;
+  background-color: #90EE90;
+  padding: 10px;
+  
+  border-radius: 10px;
+  max-width: 80%; /* Adjust as needed */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.modelChatItemcc {
+  align-self: flex-start;
+  background-color: white;
+  padding: 10px;
+  
+  border-radius: 10px;
+  max-width: 80%; /* Adjust as needed */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.chatTextcc {
+  color: black; /* Changed from white to black for better readability on light background */
+  font-size: 16px;
+}

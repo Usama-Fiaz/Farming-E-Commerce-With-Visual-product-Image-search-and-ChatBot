@@ -1,0 +1,9 @@
+.chatbot-link:hover .chatbot-icon {
+  color: #0b6623 !important;
+  font-weight: 600;
+}
+
+.chatbot-link:hover {
+  color: #0b6623 !important;
+  font-weight: 600;
+}

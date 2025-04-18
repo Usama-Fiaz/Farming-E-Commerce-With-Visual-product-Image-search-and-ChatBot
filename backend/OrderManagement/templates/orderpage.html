@@ -1,0 +1,179 @@
+{% extends "base.html" %}
+{% block title %}Order Place Information {% endblock %}
+{% block content %}
+
+<style>
+    .account-form input {
+        border: 2px solid #ccc;
+        height: calc(2em + .75rem + 2px);
+    }
+
+    .account-form input:focus {
+        border-color: #1497ff;
+        box-shadow: none;
+    }
+
+    #id_Customer_phone,#id_Customer_address {
+        display: block;
+        width: 100%;
+        padding: .375rem .75rem;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #212529;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        border-radius: .25rem;
+        transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
+
+
+</style>
+
+<div class="container">
+    
+    {% for item in basket %}
+    
+    
+    
+    {% with product=item.product %}
+    
+    
+    <div data-index="{{product.id}}" class="row mb-4 border product-item">
+      <div class="col-md-3 col-lg-2 order-md-first bg-light">
+        <img class="img-fluid mx-auto d-block"  alt="Responsive image" src="{{ product.image.url }}">
+      </div>
+      <div class="col-md-9 col-lg-10 ps-md-3 ps-lg-10">
+        <a href="{{ product.get_absolute_url }}" class="text-decoration-none text-reset">
+          <h1 class="h5 pt-2">{{ product.title }}</h1>
+        </a>
+        <div class="border">
+          <div class="col border-bottom">
+            <div class="row p-3">
+              <div class="col-6">{{ product.brand_name }}</div>
+              <div class="col-6 text-end"><span class="h6 fw-bold">£:{{ product.price }}</span></div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="row p-3">
+              <div class="col-12">
+                <label for="select">Qty</label>
+                <select id="select{{product.id}}">
+                  <option selected>
+                    {{item.qty}}
+                  </option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="1">5</option>
+                  <option value="2">6</option>
+                  <option value="3">7</option>
+                  <option value="4">8</option>
+                </select>
+
+                <button type="button" id="update-button" data-index="{{product.id}}"
+
+                  class="btn btn-outline-secondary btn-sm update-button">
+                  Update
+                </button>
+
+
+                <button type="button" id="delete-button" data-index="{{product.id}}"
+                  class="btn btn-outline-secondary btn-sm delete-button">
+                  Delete
+                </button>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endwith %}
+    {% endfor %}
+    <div class="col-12 text-end">
+      <div class="h6 fw-bold">Total bill: £<div id="subtotal" class="d-inline-flex">{{basket.get_total_price}}</div></div>
+    </div>
+
+
+</div>
+
+<div>
+
+{% if user.is_authenticated %}
+
+    <div class="container-fluid">
+        <div class="row no-gutter">
+            <div class="col-md-12">
+                <div class="login d-flex align-items-center py-5">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12 col-lg-7  mx-auto">
+                                <form class="account-form p-4 rounded col-lg-10 mx-auto" action="." method="post">
+                                    {% csrf_token %}
+                                    <h3 class="mb-2 font-weight-bold">Placed Order</h3>
+                                    
+
+                        
+                                    <label>Customer Email address<span class="text-muted small">
+                                        (*)</span></label>
+                                        <input type="text" name="Customer_email" placeholder="Enter your Email " maxlength="100" minlength="4" required id="id_Customer_address">
+
+                                    <label>Customer phone number<span class="text-muted small">
+                                        (*)</span></label>
+                                        <input type="text" name="Customer_phone" placeholder="Enter your Customer phone number" maxlength="12" minlength="4" required id="id_Customer_phone">
+
+                                    <label>Customer Order Placed address<span class="text-muted small">
+                                        (*)</span></label>
+                                        <input type="text" name="Customer_address" placeholder="Enter Order  address" maxlength="100" minlength="4" required id="id_Customer_address">
+
+                                
+                                    <button class="btn btn-primary btn-block py-2 mb-4 mt-5 fw500 w-100" type="submit">Confirm Order</button>
+                
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% else %}
+
+    <a type="button" role="button" href="{% url "account:login" %}"
+    class="btn btn-outline-secondary border-0 basket-btn">
+    <div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+            class="bi bi-door-closed" viewBox="0 0 16 16">
+            <path
+                d="M3 2a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v13h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V2zm1 13h8V2H4v13z" />
+            <path d="M9 9a1 1 0 1 0 2 0 1 1 0 0 0-2 0z" />
+        </svg>
+    </div>
+    <span class="fs15 fw500">Login</span>
+</a>
+
+{% endif %}
+
+</div>
+
+<script >
+
+    $('#id_password, #id_password2').on('keyup', function () {
+        if ($('#id_password').val() == $('#id_password2').val()) {
+          $('#message').html('Matching').css('color', 'green');
+        } else 
+          $('#message').html('Not Matching').css('color', 'red');
+      });
+
+</script>
+
+
+{% endblock %}

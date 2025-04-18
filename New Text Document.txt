@@ -1,0 +1,9 @@
+open 2 terminals
+
+1. myenv\scripts\activate
+	cd backend
+	python3 manage.py runserver
+
+
+2. cd frontend
+	npm start
