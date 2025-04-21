@@ -13,7 +13,6 @@ The architecture is divided into several key components:
 - Frontend Layer (React.js SPA)
 - Backend Services (Django REST Framework)
 - AI/ML Services (Gemini AI, TensorFlow, OpenCV)
-- External Services Integration (Stripe, Google Maps)
 - Database Layer
 - Authentication & Security Layer
 
@@ -49,7 +48,6 @@ The architecture is divided into several key components:
   - Shopping cart functionality
   - Wishlist management
   - Order tracking
-  - Secure checkout with Stripe integration
   - Real-time inventory updates
 
 - **Visual Search**
@@ -121,8 +119,6 @@ The architecture is divided into several key components:
 - OpenCV
 - JWT Authentication
 - SQLite Database
-- Google Maps API
-- Stripe API
 - Google Gemini AI API
 
 ## 📦 Installation
