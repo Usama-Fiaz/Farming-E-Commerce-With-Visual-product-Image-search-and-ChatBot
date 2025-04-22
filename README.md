@@ -2,6 +2,9 @@
 
 A modern e-commerce platform specifically designed for farming products, featuring advanced visual product search capabilities and an integrated chatbot system powered by Google's Gemini AI.
 
+## Demo Video Link
+[Watch the Demo](https://drive.google.com/file/d/1EmOqmzL7BbkFCComJZS_KOKtnM12fogp/view?usp=drive_link)
+
 ## 🏗️ System Architecture
 
 Below is the detailed system architecture diagram of our platform, showcasing the interaction between different components, services, and data flow:
